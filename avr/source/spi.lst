@@ -1,0 +1,389 @@
+GAS LISTING /tmp/ccaxBeua.s 			page 1
+
+
+   1               		.file	"spi.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__CCP__  = 0x34
+   6               	__tmp_reg__ = 0
+   7               	__zero_reg__ = 1
+   8               		.global __do_copy_data
+   9               		.global __do_clear_bss
+  10               		.stabs	"/home/john/Development/DS/ds-avr/avr/",100,0,2,.Ltext0
+  11               		.stabs	"source/spi.c",100,0,2,.Ltext0
+  12               		.text
+  13               	.Ltext0:
+  14               		.stabs	"gcc2_compiled.",60,0,0,0
+  15               		.stabs	"int:t(0,1)=r(0,1);-32768;32767;",128,0,1,0
+  16               		.stabs	"char:t(0,2)=@s8;r(0,2);0;255;",128,0,1,0
+  17               		.stabs	"long int:t(0,3)=@s32;r(0,3);020000000000;017777777777;",128,0,1,0
+  18               		.stabs	"unsigned int:t(0,4)=r(0,4);0;0177777;",128,0,1,0
+  19               		.stabs	"long unsigned int:t(0,5)=@s32;r(0,5);0;037777777777;",128,0,1,0
+  20               		.stabs	"long long int:t(0,6)=@s64;r(0,6);01000000000000000000000;0777777777777777777777;",128,0,1,
+  21               		.stabs	"long long unsigned int:t(0,7)=@s64;r(0,7);0;01777777777777777777777;",128,0,1,0
+  22               		.stabs	"short int:t(0,8)=r(0,8);-32768;32767;",128,0,1,0
+  23               		.stabs	"short unsigned int:t(0,9)=r(0,9);0;0177777;",128,0,1,0
+  24               		.stabs	"signed char:t(0,10)=@s8;r(0,10);-128;127;",128,0,1,0
+  25               		.stabs	"unsigned char:t(0,11)=@s8;r(0,11);0;255;",128,0,1,0
+  26               		.stabs	"float:t(0,12)=r(0,1);4;0;",128,0,1,0
+  27               		.stabs	"double:t(0,13)=r(0,1);4;0;",128,0,1,0
+  28               		.stabs	"long double:t(0,14)=r(0,1);4;0;",128,0,1,0
+  29               		.stabs	"void:t(0,15)=(0,15)",128,0,1,0
+  30               		.stabs	"source/spi.h",130,0,0,0
+  31               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/io.h",130,0,0,0
+  32               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/sfr_defs.h",130,0,0,0
+  33               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/inttypes.h",130,0,0,0
+  34               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/stdint.h",130,0,0,0
+  35               		.stabs	"int8_t:t(5,1)=(0,10)",128,0,121,0
+  36               		.stabs	"uint8_t:t(5,2)=(0,11)",128,0,122,0
+  37               		.stabs	"int16_t:t(5,3)=(0,1)",128,0,123,0
+  38               		.stabs	"uint16_t:t(5,4)=(0,4)",128,0,124,0
+  39               		.stabs	"int32_t:t(5,5)=(0,3)",128,0,125,0
+  40               		.stabs	"uint32_t:t(5,6)=(0,5)",128,0,126,0
+  41               		.stabs	"int64_t:t(5,7)=(0,6)",128,0,128,0
+  42               		.stabs	"uint64_t:t(5,8)=(0,7)",128,0,129,0
+  43               		.stabs	"intptr_t:t(5,9)=(5,3)",128,0,142,0
+  44               		.stabs	"uintptr_t:t(5,10)=(5,4)",128,0,147,0
+  45               		.stabs	"int_least8_t:t(5,11)=(5,1)",128,0,159,0
+  46               		.stabs	"uint_least8_t:t(5,12)=(5,2)",128,0,164,0
+  47               		.stabs	"int_least16_t:t(5,13)=(5,3)",128,0,169,0
+  48               		.stabs	"uint_least16_t:t(5,14)=(5,4)",128,0,174,0
+  49               		.stabs	"int_least32_t:t(5,15)=(5,5)",128,0,179,0
+  50               		.stabs	"uint_least32_t:t(5,16)=(5,6)",128,0,184,0
+  51               		.stabs	"int_least64_t:t(5,17)=(5,7)",128,0,192,0
+  52               		.stabs	"uint_least64_t:t(5,18)=(5,8)",128,0,199,0
+  53               		.stabs	"int_fast8_t:t(5,19)=(5,1)",128,0,213,0
+  54               		.stabs	"uint_fast8_t:t(5,20)=(5,2)",128,0,218,0
+  55               		.stabs	"int_fast16_t:t(5,21)=(5,3)",128,0,223,0
+  56               		.stabs	"uint_fast16_t:t(5,22)=(5,4)",128,0,228,0
+  57               		.stabs	"int_fast32_t:t(5,23)=(5,5)",128,0,233,0
+GAS LISTING /tmp/ccaxBeua.s 			page 2
+
+
+  58               		.stabs	"uint_fast32_t:t(5,24)=(5,6)",128,0,238,0
+  59               		.stabs	"int_fast64_t:t(5,25)=(5,7)",128,0,246,0
+  60               		.stabs	"uint_fast64_t:t(5,26)=(5,8)",128,0,253,0
+  61               		.stabs	"intmax_t:t(5,27)=(5,7)",128,0,273,0
+  62               		.stabs	"uintmax_t:t(5,28)=(5,8)",128,0,278,0
+  63               		.stabn	162,0,0,0
+  64               		.stabs	"int_farptr_t:t(4,1)=(5,5)",128,0,77,0
+  65               		.stabs	"uint_farptr_t:t(4,2)=(5,6)",128,0,81,0
+  66               		.stabn	162,0,0,0
+  67               		.stabn	162,0,0,0
+  68               		.stabs	"/usr/lib/gcc/avr/4.3.3/../../../avr/include/avr/fuse.h",130,0,0,0
+  69               		.stabs	"__fuse_t:t(6,1)=(6,2)=s3low:(0,11),0,8;high:(0,11),8,8;extended:(0,11),16,8;;",128,0,219,0
+  70               		.stabn	162,0,0,0
+  71               		.stabn	162,0,0,0
+  72               		.stabn	162,0,0,0
+  73               		.stabs	"setup_spi:F(0,15)",36,0,34,setup_spi
+  74               		.stabs	"mode:P(0,11)",64,0,33,24
+  75               		.stabs	"dord:P(0,1)",64,0,33,22
+  76               		.stabs	"interrupt:P(0,1)",64,0,33,20
+  77               		.stabs	"clock:P(0,11)",64,0,33,30
+  78               	.global	setup_spi
+  79               		.type	setup_spi, @function
+  80               	setup_spi:
+  81               		.stabd	46,0,0
+   1:source/spi.c  **** /* 
+   2:source/spi.c  ****  * Copyright (c) 2009 Andrew Smallbone <andrew@rocketnumbernine.com>
+   3:source/spi.c  ****  *
+   4:source/spi.c  ****  * Permission is hereby granted, free of charge, to any person obtaining a copy
+   5:source/spi.c  ****  * of this software and associated documentation files (the "Software"), to deal
+   6:source/spi.c  ****  * in the Software without restriction, including without limitation the rights
+   7:source/spi.c  ****  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   8:source/spi.c  ****  * copies of the Software, and to permit persons to whom the Software is
+   9:source/spi.c  ****  * furnished to do so, subject to the following conditions:
+  10:source/spi.c  ****  * 
+  11:source/spi.c  ****  * The above copyright notice and this permission notice shall be included in
+  12:source/spi.c  ****  * all copies or substantial portions of the Software.
+  13:source/spi.c  ****  * 
+  14:source/spi.c  ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  15:source/spi.c  ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  16:source/spi.c  ****  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  17:source/spi.c  ****  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  18:source/spi.c  ****  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  19:source/spi.c  ****  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  20:source/spi.c  ****  * THE SOFTWARE.
+  21:source/spi.c  ****  */
+  22:source/spi.c  **** 
+  23:source/spi.c  **** #include <spi.h>
+  24:source/spi.c  **** 
+  25:source/spi.c  **** #ifdef __cplusplus
+  26:source/spi.c  **** extern "C"{
+  27:source/spi.c  **** #endif
+  28:source/spi.c  **** 
+  29:source/spi.c  **** #ifdef __ARDUINO__
+  30:source/spi.c  **** #include <wiring.h>
+  31:source/spi.c  **** #endif
+  32:source/spi.c  **** 
+  33:source/spi.c  **** void setup_spi(unsigned char mode, int dord, int interrupt, unsigned char clock)
+GAS LISTING /tmp/ccaxBeua.s 			page 3
+
+
+  34:source/spi.c  **** {
+  82               		.stabn	68,0,34,.LM0-.LFBB1
+  83               	.LM0:
+  84               	.LFBB1:
+  85               	/* prologue: function */
+  86               	/* frame size = 0 */
+  87 0000 E22F      		mov r30,r18
+  35:source/spi.c  **** #ifdef __ARDUINO__
+  36:source/spi.c  ****   if (clock == SPI_SLAVE) { // if slave SS is input (unused if master)
+  37:source/spi.c  ****     pinMode(SPI_MOSI_PIN, INPUT);
+  38:source/spi.c  ****     pinMode(SPI_MISO_PIN, OUTPUT);
+  39:source/spi.c  ****     pinMode(SPI_SCK_PIN, INPUT);
+  40:source/spi.c  ****     pinMode(SPI_SS_PIN, INPUT);
+  41:source/spi.c  ****   } else {
+  42:source/spi.c  ****     pinMode(SPI_MOSI_PIN, OUTPUT);
+  43:source/spi.c  ****     pinMode(SPI_MISO_PIN, INPUT);
+  44:source/spi.c  ****     pinMode(SPI_SCK_PIN, OUTPUT);
+  45:source/spi.c  ****     pinMode(SPI_SS_PIN, OUTPUT);
+  46:source/spi.c  ****   }
+  47:source/spi.c  **** #else
+  48:source/spi.c  ****   // specify pin directions for SPI pins on port B
+  49:source/spi.c  ****   if (clock == SPI_SLAVE) { // if slave SS and SCK is input
+  88               		.stabn	68,0,49,.LM1-.LFBB1
+  89               	.LM1:
+  90 0002 203F      		cpi r18,lo8(-16)
+  91 0004 01F4      		brne .L2
+  50:source/spi.c  ****     DDRB &= ~(1<<SPI_MOSI_PIN); // input
+  92               		.stabn	68,0,50,.LM2-.LFBB1
+  93               	.LM2:
+  94 0006 2398      		cbi 36-32,3
+  51:source/spi.c  ****     DDRB |= (1<<SPI_MISO_PIN); // output
+  95               		.stabn	68,0,51,.LM3-.LFBB1
+  96               	.LM3:
+  97 0008 249A      		sbi 36-32,4
+  52:source/spi.c  ****     DDRB &= ~(1<<SPI_SS_PIN); // input
+  98               		.stabn	68,0,52,.LM4-.LFBB1
+  99               	.LM4:
+ 100 000a 2298      		cbi 36-32,2
+  53:source/spi.c  ****     DDRB &= ~(1<<SPI_SCK_PIN);// input
+ 101               		.stabn	68,0,53,.LM5-.LFBB1
+ 102               	.LM5:
+ 103 000c 2598      		cbi 36-32,5
+ 104 000e 00C0      		rjmp .L3
+ 105               	.L2:
+  54:source/spi.c  ****   } else {
+  55:source/spi.c  ****     DDRB |= (1<<SPI_MOSI_PIN); // output
+ 106               		.stabn	68,0,55,.LM6-.LFBB1
+ 107               	.LM6:
+ 108 0010 239A      		sbi 36-32,3
+  56:source/spi.c  ****     DDRB &= ~(1<<SPI_MISO_PIN); // input
+ 109               		.stabn	68,0,56,.LM7-.LFBB1
+ 110               	.LM7:
+ 111 0012 2498      		cbi 36-32,4
+  57:source/spi.c  ****     DDRB |= (1<<SPI_SCK_PIN);// output
+ 112               		.stabn	68,0,57,.LM8-.LFBB1
+ 113               	.LM8:
+ 114 0014 259A      		sbi 36-32,5
+GAS LISTING /tmp/ccaxBeua.s 			page 4
+
+
+  58:source/spi.c  ****     DDRB |= (1<<SPI_SS_PIN);// output
+ 115               		.stabn	68,0,58,.LM9-.LFBB1
+ 116               	.LM9:
+ 117 0016 229A      		sbi 36-32,2
+ 118               	.L3:
+  59:source/spi.c  ****   }
+  60:source/spi.c  **** #endif
+  61:source/spi.c  ****   SPCR = ((interrupt ? 1 : 0)<<SPIE) // interrupt enabled
+ 119               		.stabn	68,0,61,.LM10-.LFBB1
+ 120               	.LM10:
+ 121 0018 452B      		or r20,r21
+ 122 001a 01F4      		brne .L4
+ 123 001c 50E4      		ldi r21,lo8(64)
+ 124 001e 00C0      		rjmp .L5
+ 125               	.L4:
+ 126 0020 50EC      		ldi r21,lo8(-64)
+ 127               	.L5:
+ 128 0022 E03F      		cpi r30,lo8(-16)
+ 129 0024 01F4      		brne .L6
+ 130 0026 40E0      		ldi r20,lo8(0)
+ 131 0028 00C0      		rjmp .L7
+ 132               	.L6:
+ 133 002a 40E1      		ldi r20,lo8(16)
+ 134               	.L7:
+ 135 002c 282F      		mov r18,r24
+ 136 002e 30E0      		ldi r19,lo8(0)
+ 137 0030 C901      		movw r24,r18
+ 138 0032 8270      		andi r24,lo8(2)
+ 139 0034 9070      		andi r25,hi8(2)
+ 140 0036 A3E0      		ldi r26,3
+ 141 0038 880F      	1:	lsl r24
+ 142 003a 991F      		rol r25
+ 143 003c AA95      		dec r26
+ 144 003e 01F4      		brne 1b
+ 145 0040 2170      		andi r18,lo8(1)
+ 146 0042 3070      		andi r19,hi8(1)
+ 147 0044 220F      		lsl r18
+ 148 0046 331F      		rol r19
+ 149 0048 220F      		lsl r18
+ 150 004a 331F      		rol r19
+ 151 004c 822B      		or r24,r18
+ 152 004e 25E0      		ldi r18,5
+ 153 0050 660F      	1:	lsl r22
+ 154 0052 771F      		rol r23
+ 155 0054 2A95      		dec r18
+ 156 0056 01F4      		brne 1b
+ 157 0058 862B      		or r24,r22
+ 158 005a 2E2F      		mov r18,r30
+ 159 005c 2170      		andi r18,lo8(1)
+ 160 005e 822B      		or r24,r18
+ 161 0060 2E2F      		mov r18,r30
+ 162 0062 30E0      		ldi r19,lo8(0)
+ 163 0064 2270      		andi r18,lo8(2)
+ 164 0066 3070      		andi r19,hi8(2)
+ 165 0068 220F      		lsl r18
+ 166 006a 331F      		rol r19
+ 167 006c 822B      		or r24,r18
+GAS LISTING /tmp/ccaxBeua.s 			page 5
+
+
+ 168 006e 852B      		or r24,r21
+ 169 0070 842B      		or r24,r20
+ 170 0072 8CBD      		out 76-32,r24
+  62:source/spi.c  ****     | (1<<SPE) // enable SPI
+  63:source/spi.c  ****     | (dord<<DORD) // LSB or MSB
+  64:source/spi.c  ****     | (((clock != SPI_SLAVE) ? 1 : 0) <<MSTR) // Slave or Master
+  65:source/spi.c  ****     | ((mode & 0x02) <<CPOL) | ((mode & 0x01) <<CPHA) // clock timing mode
+  66:source/spi.c  ****     | ((clock & 0x02) << SPR1) | ((clock & 0x01) << SPR0); // cpu clock divisor
+  67:source/spi.c  ****   SPSR |= ((clock & 0x04) << SPI2X); // clock divisor
+ 171               		.stabn	68,0,67,.LM11-.LFBB1
+ 172               	.LM11:
+ 173 0074 8DB5      		in r24,77-32
+ 174 0076 E470      		andi r30,lo8(4)
+ 175 0078 8E2B      		or r24,r30
+ 176 007a 8DBD      		out 77-32,r24
+ 177               	/* epilogue start */
+  68:source/spi.c  **** }
+ 178               		.stabn	68,0,68,.LM12-.LFBB1
+ 179               	.LM12:
+ 180 007c 0895      		ret
+ 181               		.size	setup_spi, .-setup_spi
+ 182               	.Lscope1:
+ 183               		.stabs	"",36,0,0,.Lscope1-.LFBB1
+ 184               		.stabd	78,0,0
+ 185               		.stabs	"disable_spi:F(0,15)",36,0,71,disable_spi
+ 186               	.global	disable_spi
+ 187               		.type	disable_spi, @function
+ 188               	disable_spi:
+ 189               		.stabd	46,0,0
+  69:source/spi.c  **** 
+  70:source/spi.c  **** void disable_spi()
+  71:source/spi.c  **** {
+ 190               		.stabn	68,0,71,.LM13-.LFBB2
+ 191               	.LM13:
+ 192               	.LFBB2:
+ 193               	/* prologue: function */
+ 194               	/* frame size = 0 */
+  72:source/spi.c  ****   SPCR = 0;
+ 195               		.stabn	68,0,72,.LM14-.LFBB2
+ 196               	.LM14:
+ 197 007e 1CBC      		out 76-32,__zero_reg__
+ 198               	/* epilogue start */
+  73:source/spi.c  **** }
+ 199               		.stabn	68,0,73,.LM15-.LFBB2
+ 200               	.LM15:
+ 201 0080 0895      		ret
+ 202               		.size	disable_spi, .-disable_spi
+ 203               	.Lscope2:
+ 204               		.stabs	"",36,0,0,.Lscope2-.LFBB2
+ 205               		.stabd	78,0,0
+ 206               		.stabs	"send_spi:F(0,11)",36,0,76,send_spi
+ 207               		.stabs	"out:P(0,11)",64,0,75,24
+ 208               	.global	send_spi
+ 209               		.type	send_spi, @function
+ 210               	send_spi:
+ 211               		.stabd	46,0,0
+  74:source/spi.c  **** 
+GAS LISTING /tmp/ccaxBeua.s 			page 6
+
+
+  75:source/spi.c  **** unsigned char send_spi(unsigned char out)
+  76:source/spi.c  **** {
+ 212               		.stabn	68,0,76,.LM16-.LFBB3
+ 213               	.LM16:
+ 214               	.LFBB3:
+ 215               	/* prologue: function */
+ 216               	/* frame size = 0 */
+  77:source/spi.c  ****   SPDR = out;
+ 217               		.stabn	68,0,77,.LM17-.LFBB3
+ 218               	.LM17:
+ 219 0082 8EBD      		out 78-32,r24
+ 220               	.L12:
+  78:source/spi.c  ****   while (!(SPSR & (1<<SPIF)));
+ 221               		.stabn	68,0,78,.LM18-.LFBB3
+ 222               	.LM18:
+ 223 0084 0DB4      		in __tmp_reg__,77-32
+ 224 0086 07FE      		sbrs __tmp_reg__,7
+ 225 0088 00C0      		rjmp .L12
+  79:source/spi.c  ****   return SPDR;
+ 226               		.stabn	68,0,79,.LM19-.LFBB3
+ 227               	.LM19:
+ 228 008a 8EB5      		in r24,78-32
+ 229               	/* epilogue start */
+  80:source/spi.c  **** }
+ 230               		.stabn	68,0,80,.LM20-.LFBB3
+ 231               	.LM20:
+ 232 008c 0895      		ret
+ 233               		.size	send_spi, .-send_spi
+ 234               	.Lscope3:
+ 235               		.stabs	"",36,0,0,.Lscope3-.LFBB3
+ 236               		.stabd	78,0,0
+ 237               		.stabs	"received_from_spi:F(0,11)",36,0,83,received_from_spi
+ 238               		.stabs	"data:P(0,11)",64,0,82,24
+ 239               	.global	received_from_spi
+ 240               		.type	received_from_spi, @function
+ 241               	received_from_spi:
+ 242               		.stabd	46,0,0
+  81:source/spi.c  **** 
+  82:source/spi.c  **** unsigned char received_from_spi(unsigned char data)
+  83:source/spi.c  **** {
+ 243               		.stabn	68,0,83,.LM21-.LFBB4
+ 244               	.LM21:
+ 245               	.LFBB4:
+ 246               	/* prologue: function */
+ 247               	/* frame size = 0 */
+  84:source/spi.c  ****   SPDR = data;
+ 248               		.stabn	68,0,84,.LM22-.LFBB4
+ 249               	.LM22:
+ 250 008e 8EBD      		out 78-32,r24
+  85:source/spi.c  ****   return SPDR;
+ 251               		.stabn	68,0,85,.LM23-.LFBB4
+ 252               	.LM23:
+ 253 0090 8EB5      		in r24,78-32
+ 254               	/* epilogue start */
+  86:source/spi.c  **** }
+ 255               		.stabn	68,0,86,.LM24-.LFBB4
+ 256               	.LM24:
+GAS LISTING /tmp/ccaxBeua.s 			page 7
+
+
+ 257 0092 0895      		ret
+ 258               		.size	received_from_spi, .-received_from_spi
+ 259               	.Lscope4:
+ 260               		.stabs	"",36,0,0,.Lscope4-.LFBB4
+ 261               		.stabd	78,0,0
+ 262               		.stabs	"",100,0,0,.Letext0
+ 263               	.Letext0:
+GAS LISTING /tmp/ccaxBeua.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 spi.c
+     /tmp/ccaxBeua.s:2      *ABS*:0000003f __SREG__
+     /tmp/ccaxBeua.s:3      *ABS*:0000003e __SP_H__
+     /tmp/ccaxBeua.s:4      *ABS*:0000003d __SP_L__
+     /tmp/ccaxBeua.s:5      *ABS*:00000034 __CCP__
+     /tmp/ccaxBeua.s:6      *ABS*:00000000 __tmp_reg__
+     /tmp/ccaxBeua.s:7      *ABS*:00000001 __zero_reg__
+     /tmp/ccaxBeua.s:80     .text:00000000 setup_spi
+     /tmp/ccaxBeua.s:188    .text:0000007e disable_spi
+     /tmp/ccaxBeua.s:210    .text:00000082 send_spi
+     /tmp/ccaxBeua.s:241    .text:0000008e received_from_spi
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
