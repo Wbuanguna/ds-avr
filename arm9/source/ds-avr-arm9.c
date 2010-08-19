@@ -197,6 +197,18 @@ void init_graphics(void) {
 	//PA_Draw16bitRect(OVERVIEW_SCREEN, 2, 2, 253, 189, PA_RGB(31, 0, 0));
 }
 
+void pwm_on(uint8_t output) {
+	iprintf("PWM output %d on\n", output);
+	send_chars(2, PWM_ON_COMMAND, output);
+	swiDelay(20000);
+}
+
+void pwm_set(uint8_t output, uint8_t val) {
+	iprintf("PWM output %d: %d\n", output, val);
+	send_chars(3, PWM_SET_COMMAND, output, val);
+	swiDelay(20000);
+}
+
 int main(void) {
 	uint16_t m1, m2;
 	int i;
@@ -214,6 +226,7 @@ int main(void) {
 	m2 = 3;
 	spi_debug = 0;
 	spi_control(m1, m2, spi_debug);
+	pwm_on(PWM0);
 
 	iprintf("u/d & r/l adjust m1 & m2\n");
 	iprintf("a = led b = analog\n");
@@ -231,6 +244,7 @@ int main(void) {
 		scanKeys();
 		if(Pad.Newpress.A) {
 			//flash_led(i++);
+			pwm_on(PWM0);
 			send_chars(2, FLASH_LED_COMMAND, i++);
 			if(i > 9)
 				i = 1;
@@ -278,17 +292,19 @@ int main(void) {
 			m2 -= 1;
 			spi_control(m1, m2, spi_debug);
 			iprintf("m2: %d\n", m2);
-		} 
+		}
+		if(Stylus.Held)
+			pwm_set(PWM0, Stylus.X);
 		//PA_SetBgPalCol(OVERVIEW_SCREEN, 0, PA_RGB(31, 31, 31)); // Set the bottom screen color to white
 		
 		PA_WaitForVBL();
 		//val = analog_read(0) >> 2;
 		//PA_Draw16bitRect(OVERVIEW_SCREEN, val, 0, 255, 10, PA_RGB(31, 31, 31));
 		//PA_Draw16bitRect(OVERVIEW_SCREEN, 0, 0, val, 10, PA_RGB(31, 0, 0));
-		val = analog_read(0) >> 4;
+		//val = analog_read(0) >> 4;
 		//val = (val + 1) & 0x3F;
-		PA_Draw16bitRect(OVERVIEW_SCREEN, 0, 63-val, 10, 0, PA_RGB(31, 31, 31));
-		PA_Draw16bitRect(OVERVIEW_SCREEN, 0, 63, 10, 63-val, PA_RGB(31, 0, 0));
+		//PA_Draw16bitRect(OVERVIEW_SCREEN, 0, 63-val, 10, 0, PA_RGB(31, 31, 31));
+		//PA_Draw16bitRect(OVERVIEW_SCREEN, 0, 63, 10, 63-val, PA_RGB(31, 0, 0));
 	}
 
 	return 0;

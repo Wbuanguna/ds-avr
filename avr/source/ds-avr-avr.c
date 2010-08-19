@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "uart.h"
 #include "ds-avr.h"
 
+#include "pwm.c"
+
 #define LED_PIN PORTD3
 
 #define DEBUG 0
@@ -54,6 +56,7 @@ uint8_t received=0;
 uint8_t transmitted = 0;
 short int cmd_length=0;
 char sending = 0;
+uint8_t pwm_pins_on = 0;
 
 int __attribute__ ((format (printf,1, 2))) serial_printf (const char *fmt, ...) 
 {
@@ -154,6 +157,24 @@ inline void swap_buffers(void) {
     have_data = received;
 }
 
+void pwm_on_command(void) {
+    if(cincoming[2] == PWM0) {
+        pwmInit56();
+        DDRD |= _BV(PD6);
+        pwmOn6();
+        pwm_pins_on |= _BV(PWM0);
+        
+        pwmSet6(128);
+    }
+}
+
+void pwm_set_command(void) {
+    if(cincoming[2] == PWM0) {
+        pwmSet6(cincoming[3]);
+        PORTD ^= _BV(LED_PIN);
+    }
+}
+
 // parse the data received from the other device
 void parse_message(uint8_t length)
 {
@@ -214,9 +235,15 @@ void parse_message(uint8_t length)
                 break;
             _MMIO_BYTE(cincoming[2]) = cincoming[3];
             break;
-        case PWM_SET_COMMAND:
-            
+        case PWM_ON_COMMAND:
+            pwm_on_command();
             break;
+        case PWM_SET_COMMAND:
+            pwm_set_command();
+            break;
+        case PWM_OFF_COMMAND:
+            break;
+            
         default:
             flash_led(2, 500);
     }
@@ -297,7 +324,7 @@ int main(void) {
     
     // Reduce power, turn off TWI (I2C), Timer/Counter2, Timer/Counter0, 
     // Timer/Counter1, Analog Comparator
-    PRR |= _BV(PRTWI) | _BV(PRTIM2) | _BV(PRTIM0) | _BV(PRTIM1);
+    PRR |= _BV(PRTWI); // | _BV(PRTIM2) | _BV(PRTIM0) | _BV(PRTIM1);
     ACSR |= _BV(ACD);
 
     // Setup SPI

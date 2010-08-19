@@ -12,13 +12,19 @@
 #define IO_REG_SET_COMMAND 0x12
 
 
+#define PWM_ON_COMMAND  0x19
 #define PWM_SET_COMMAND 0x20
+#define PWM_OFF_COMMAND 0x21
 
 enum {
     PWM0, //OC0A pin 6
     PWM1, //OC0B pin 5
-    PWM2, //OC1A pin 9 (16 bit)
-    PWM3, //OC1B pin 10 (16 bit)
+    PWM2, //OC1A pin 9 (16 bit) Note: pin used for SPI
+    PWM3, //OC1B pin 10 (16 bit) Note: pin used for SPI
     PWM4, //OC2A pin 11
     PWM5, //OC2B pin 3
+    // Output compare groupings
+    PWM_01,
+    PWM_23,
+    PWM_45,
 };
