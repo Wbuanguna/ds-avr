@@ -4,3 +4,9 @@ syntax: glob
 *.o
 *~
 *.bak
+*.arm9
+*.arm7
+*.nds
+*/build/*
+*.elf
+*.lst
