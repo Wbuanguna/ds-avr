@@ -39,6 +39,7 @@ typedef struct AvrFifoMessage {
 	union {
 		struct {
 			uint16_t m1, m2;
+			uint8_t debug;
 		} SPIConfig;
 	
 		struct {
@@ -71,5 +72,6 @@ uint8_t CRC8(uint8_t input, uint8_t seed);
 extern int shortwait;
 extern uint8_t incoming[BUFFER_LENGTH];
 extern uint8_t speed;
+extern uint8_t spi_debug;
 uint8_t send_chars(int length, ...);
 uint8_t read_increment(uint8_t n);

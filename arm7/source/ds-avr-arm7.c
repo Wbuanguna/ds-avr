@@ -94,6 +94,7 @@ void avrDataHandler(int bytes, void *user_data) {
 	} else if(msg.type == CONFIG_MESSAGE) {
 	   	shortwait = WAIT_1MS * msg.SPIConfig.m1;
 	   	speed = msg.SPIConfig.m2;
+	   	spi_debug = msg.SPIConfig.debug;
 	} else if(msg.type == LED_FLASH_MESSAGE) {
 	    send_chars(2, FLASH_LED_COMMAND, msg.LEDFlash.count);
 	} else if (msg.type == ANALOG_READ_MESSAGE) {

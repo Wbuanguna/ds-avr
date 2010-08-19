@@ -14,6 +14,7 @@
 
 int shortwait;
 uint8_t speed;
+uint8_t spi_debug;
 
 //--------------------------------------------------------------
 //    SPI section
@@ -28,9 +29,10 @@ uint8_t spi_send(uint8_t in_byte) {
 	CARD_WaitBusy(); // wait for transmission to complete
 	out_byte=AUXSPIDATA; // read the input byte from the SPI bus
 #ifdef ARM9
-	iprintf("transmit: 0x%x recieved: 0x%x\n", in_byte, out_byte);	
+	if(spi_debug)
+		iprintf("transmit: 0x%x recieved: 0x%x\n", in_byte, out_byte);	
 #endif
-	swiDelay(30 + shortwait);
+	swiDelay(120); // Found by experimentation
 
 	return out_byte;
 }
@@ -45,7 +47,7 @@ uint8_t send_array(int length, uint8_t *data)
         incoming[j] = spi_send(*data);
         data++;
     }
-    swiDelay(12 + WAIT_CYCLES);
+    //swiDelay(shortwait);
     
     AUXSPIOFF();
     return incoming[0];
