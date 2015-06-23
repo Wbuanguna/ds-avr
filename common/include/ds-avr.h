@@ -21,10 +21,6 @@ enum {
     PWM1, //OC0B pin 5
     PWM2, //OC1A pin 9 (16 bit) Note: pin used for SPI
     PWM3, //OC1B pin 10 (16 bit) Note: pin used for SPI
-    PWM4, //OC2A pin 11
+    PWM4, //OC2A pin 11  Note: pin used for SPI
     PWM5, //OC2B pin 3
-    // Output compare groupings
-    PWM_01,
-    PWM_23,
-    PWM_45,
 };

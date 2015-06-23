@@ -158,20 +158,62 @@ inline void swap_buffers(void) {
 }
 
 void pwm_on_command(void) {
+    if(cincoming[2] == PWM0 || cincoming[2] == PWM1) {
+        if(bit_is_clear(pwm_pins_on, PWM0) && bit_is_clear(pwm_pins_on, PWM1)) {
+            pwmInit56();
+        }
+    }
     if(cincoming[2] == PWM0) {
-        pwmInit56();
         DDRD |= _BV(PD6);
         pwmOn6();
         pwm_pins_on |= _BV(PWM0);
-        
-        pwmSet6(128);
+        pwmSet6(0);
+    } else if(cincoming[2] == PWM1) {
+        DDRD |= _BV(PD5);
+        pwmOn5();
+        pwm_pins_on |= _BV(PWM1);
+        pwmSet5(0);
+    } else if(cincoming[2] == PWM5) {
+        pwmInit311();
+        DDRD |= _BV(PD3);
+        pwmOn3();
+        pwm_pins_on |= _BV(PWM5);
+        pwmSet3(0);
     }
 }
 
 void pwm_set_command(void) {
     if(cincoming[2] == PWM0) {
         pwmSet6(cincoming[3]);
-        PORTD ^= _BV(LED_PIN);
+    } else if(cincoming[2] == PWM1) {
+        pwmSet5(cincoming[3]);
+    } else if(cincoming[2] == PWM5) {
+        pwmSet3(cincoming[3]);
+    }
+}
+
+void pwm_off_command(void) {
+    if(cincoming[2] == PWM0) {
+        //DDRD |= _BV(PD6);
+        pwmOff6();
+        pwm_pins_on &= ~_BV(PWM0);
+        //pwmSet6(0);
+    } else if(cincoming[2] == PWM1) {
+        //DDRD |= _BV(PD5);
+        pwmOff5();
+        pwm_pins_on &= ~_BV(PWM1);
+       // pwmSet5(0);
+    } else if(cincoming[2] == PWM5) {
+        pwmOff311();
+        //DDRD |= _BV(PD3);
+        pwmOff3();
+        pwm_pins_on &= ~_BV(PWM5);
+        //pwmSet3(0);
+    }
+    if(cincoming[2] == PWM0 || cincoming[2] == PWM1) {
+        if(bit_is_clear(pwm_pins_on, PWM0) && bit_is_clear(pwm_pins_on, PWM1)) {
+            pwmOff56();
+        }
     }
 }
 
@@ -242,8 +284,8 @@ void parse_message(uint8_t length)
             pwm_set_command();
             break;
         case PWM_OFF_COMMAND:
+            pwm_off_command();
             break;
-            
         default:
             flash_led(2, 500);
     }
@@ -267,7 +309,7 @@ ISR(SPI_STC_vect)
     /*
     while(1) {
         //Poll Status Register SPIF bit until true
-        while(bit_is_clear(SPSR, SPIF) && bit_is_clear(PINB, SPI_SS_PIN) );
+        while(SPSR, SPIF) && bit_is_clear(PINB, SPI_SS_PIN) );
 
         if(bit_is_set(SPSR, SPIF)) {
             incoming[received] = SPDR;

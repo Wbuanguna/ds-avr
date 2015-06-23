@@ -245,6 +245,8 @@ int main(void) {
 		if(Pad.Newpress.A) {
 			//flash_led(i++);
 			pwm_on(PWM0);
+			pwm_on(PWM1);
+			pwm_on(PWM5);
 			send_chars(2, FLASH_LED_COMMAND, i++);
 			if(i > 9)
 				i = 1;
@@ -293,8 +295,11 @@ int main(void) {
 			spi_control(m1, m2, spi_debug);
 			iprintf("m2: %d\n", m2);
 		}
-		if(Stylus.Held)
+		if(Stylus.Held) {
 			pwm_set(PWM0, Stylus.X);
+			pwm_set(PWM1, Stylus.X);
+			pwm_set(PWM5, Stylus.X);
+		}
 		//PA_SetBgPalCol(OVERVIEW_SCREEN, 0, PA_RGB(31, 31, 31)); // Set the bottom screen color to white
 		
 		PA_WaitForVBL();
